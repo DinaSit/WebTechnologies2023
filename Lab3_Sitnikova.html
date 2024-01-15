@@ -1,0 +1,98 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа №3</title>
+    <style>
+        * {
+            /*Говорим, что ширину надо считать с учетом паддингов и бордеров */
+            box-sizing: border-box;
+        }
+        body {
+            width: 70%;
+            margin: 0 auto;
+            background-color: #DBB0FF;
+        }
+        form {
+            padding: 10px;
+            border: 2px solid #9B24FF;
+            border-radius: 8px;
+            background-color: #ECD6FF;
+            box-shadow: 0 0 5px;
+        }
+        form div {
+            margin: 10px 0;
+        }
+        input, textarea, select, hr {
+            border: 1px solid #9B24FF;
+        }
+        textarea::-webkit-input-placeholder { color: #9B24FF; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center">Лабораторная работа 3</h2>
+    <b>Создание HTML-форм и стилизация при помощи CSS</b><br>
+    <small>Ситникова Диана, НПИбд-01-22, №1032201746</small>
+    <hr>
+    <b>Задание 1.</b> Создать следующую форму в HTML:<br><br>
+    <form>
+    <div>
+        <label for="input-text-id">Поле ввода однострочного текста (text):</label>
+        <input type="text" id="input-text-id" placeholder="Строка текста" style="box-shadow: 0 0 5px">
+    </div><br>
+    <div>
+        <label for="userPassword">Поле ввода пароля (password):</label>
+        <input id="userPassword" type="password" placeholder="***" style="box-shadow: 0 0 5px">
+    </div><br>
+    <div>
+        <label for="text_area">Поле ввода многострочного текста (textarea):</label>
+        <textarea id="text_area" style="box-shadow: 0 0 5px"></textarea>
+    </div>
+    <p>Независимые переключатели (checkbox):</p>
+    <div>
+        <input type="checkbox" name="cb2" id="1">
+        <label for="1">1</label>
+    </div>
+    <div>
+        <input type="checkbox" name="cb2" id="2">
+        <label for="2">2</label>
+    </div>
+    <div>
+        <input type="checkbox" name="cb2" id="3">
+        <label for="3">3</label>
+    </div>
+    <p>Зависимые переключатели (radio):</p>
+    <div>
+        <input type="radio" name="rd" id="rd1">
+        <label for="rd1">Первый</label>
+    </div>
+    <div>
+        <input type="radio" name="rd" id="rd2">
+        <label for="rd2">Второй</label>
+    </div>
+    <div>
+        <input type="radio" name="rd" id="rd3">
+        <label for="rd3">Третий</label>
+    </div><br>
+    <div>
+        <label for="sid">Выбор из списка (select):</label>
+        <select name="select_name" id="sid" style="box-shadow: 0 0 5px">
+            <option selected value="1">Пример 1</option>
+            <option value="2">Пример 2</option>
+            <option value="3">Пример 3</option>
+        </select>
+    </div></form><hr>
+    <b>Задание 2.</b> Создать следующие элементы формы в HTML. Выполнить пример, соответствующий последней цифре номера
+    студенческого билета. <br>
+    <u>Пример 1/6.</u><br><br>
+    <label>
+        <textarea style="box-shadow: 0 0 5px; height: 70px; width: 200px" placeholder="Первая позиция
+Вторая позиция
+Третья позиция"></textarea>
+    </label>
+    <label>
+        <select name="spisok" size="3" style="border: 1px solid #9B24FF; box-shadow: 0 0 5px">
+            <option value="1">Первая позиция</option>
+            <option selected value="2">Вторая позиция</option>
+            <option value="3">Третья позиция</option>
+        </select>
+    </label>
+</body>

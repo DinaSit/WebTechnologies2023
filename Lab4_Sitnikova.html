@@ -1,0 +1,210 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа №4</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            width: 70%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align: center">Лабораторная работа 4</h2>
+<b>Основы программирования на Javascript</b><br>
+<small>Ситникова Диана, НПИбд-01-22, №1032201746</small>
+<hr>
+<b>Упражнение 1.</b> Создать 7 кнопок, запускающих функции, решающие приведенные ниже 7 заданий.
+Функции объявлены и реализованы внутри тега &lt;script&gt; в файле html:<br>
+<p>
+<u>Задание 1.</u> Проверить, какое значение возвращает функция window.confirm() при нажатии кнопки «ОК» и какое при нажатии
+    «Отмена».<br>
+<button onclick="f1()">Start</button>
+</p>
+<p>
+<u>Задание 2.</u> В поле ввода окна, создаваемого window.prompt(сообщение), записать свою фамилию и вывести приветствие,
+    обращенное к себе, в окне с кнопкой «ОК».<br>
+<button onclick="f2()">Start</button>
+</p>
+<p>
+<u>Задание 3.</u> С помощью метода window.prompt(сообщение) узнать имя, возраст и настроение пользователя, а затем с помощью
+    метода document.write() выдать следующий монолог: <br>
+    Здравствуй, имя <br>
+    Тебе возраст лет <br>
+    И у тебя введенное настроение! <br>
+    Всё верно,не так-ли?!<br>
+<button onclick="f3()">Start</button>
+</p>
+<p>
+<u>Задание 4.</u> Допиcать фрагмент кода для конвертации строкового значения в числовое. Для вывода результата использовать
+    метод document.write(): <br>
+    var x = prompt("Введите значение x ", "0"); <br>
+    var y = prompt("Введите значение y ", "0.0"); <br>
+    var integerX = ... <br>
+    var floatY = ... <br>
+    var result = integerX + floatY; <br>
+    ...;<br>
+<button onclick="f4()">Start</button>
+</p>
+<p>
+<u>Задание 5.</u> Найти ошибки в следующем фрагменте кода: <br>
+    var firstName = prompt("Введите имя"; "сюда"); <br>
+    var lastName = promt("Введите фамилию"); <br>
+    int age = prompt("Введите возраст"); <br>
+    alert( “В следующем году вам будет”, Age);<br>
+<button onclick="f5()">Start</button>
+</p>
+<p>
+<u>Задание 6.</u> Создать несколько абзацев с различными ID, например ID1, ID2, ID3. . .  С помощью метода  prompt() ввести
+    ID  и, используя innerHTML,  методом alert()  вывести текст соответствующего абзаца в  окне.<br>
+<button onclick="f6()">Start</button>
+</p>
+<p>
+<u>Задание 7.</u> Создать несколько абзацев с различными ID, например ID1, ID2, ID3. . .  С помощью метода prompt() ввести
+    ID  и, используя innerHTML заменить текст соответствующего абзаца на текст, который вводится с помощью метода
+    prompt(). Методом alert() вывести новый текст в  окне.<br>
+<button onclick="f7()">Start</button>
+</p>
+<p id="ID1"> Я усталым таким еще не был. </p>
+<p id="ID2"> В эту серую морозь и слизь </p>
+<p id="ID3"> Мне приснилось рязанское небо </p>
+<p id="ID4"> И моя непутевая жизнь. </p>
+<p id="ID5"> Много женщин меня любило, </p>
+<p id="ID6"> Да и сам я любил не одну, </p>
+<p id="ID7"> Не от этого ль темная сила </p>
+<p id="ID8"> Приучила меня к вину. </p>
+С. А. Есенин
+<br><hr>
+<b>Упражнение 2.</b> Выполнить 3 задания, реализовав их во встроенном javascript внутрь html. Каждое задание –
+запускается отдельной кнопкой (всего должно быть 3 кнопки, с текстом, соответствующим номеру задания)<br>
+<p>
+<u>Задание 6.</u> Создать страницу, которая предлагает пользователю ввести число, а затем выводит кубы всех чисел от 1 до
+    введенного числа при условии, что они не превосходят 1000. Воспользоваться <br>
+<ul>
+    <li>циклом for;</li>
+    <li>циклом while;</li>
+    <li>циклом do while.</li>
+</ul>
+<button onclick="f8()">Start</button>
+</p>
+<p>
+<u>Задание 16.</u> Вывести на экран таблицу умножения (как в школьной тетради).
+<button onclick="f9()">Start</button>
+</p>
+<p>
+<u>Задание 26.</u> С помощью двух вложенных циклов нарисовать следующую пирамидку: <br>
+    1 <br>
+    22 <br>
+    333 <br>
+    4444 <br>
+    55555 <br>
+    666666 <br>
+    7777777 <br>
+    88888888 <br>
+    999999999
+<button onclick="f10()">Start</button>
+</p>
+<script>
+    function f1() {
+        alert(window.confirm());
+    }
+    function f2() {
+        let x = window.prompt('Введите Фамилию:');
+        window.confirm('Приятного тестирования Лабораторной работы, ' + x + '!')
+    }
+    function f3() {
+        let x = prompt('Введите Имя');
+        let y = prompt('Введите возраст');
+        let z = prompt('Введите настроение');
+        document.write('Здравствуй, ' + x + '!<br>Тебе ', y, ' лет<br>И у тебя ', z, ' настроение!<br>Всё верно, не так-ли?!');
+    }
+    function f4() {
+        var x = prompt("Введите значение x ", "0");
+        var y = prompt("Введите значение y ", "0.0");
+        var integerX = parseInt(x);
+        var floatY = parseFloat(y);
+        var result = integerX + floatY;
+        document.write('Ответ: ' + result);
+    }
+    function f5() {
+        var firstName = prompt("Введите имя", "сюда");
+        var lastName = prompt("Введите фамилию");
+        var age = prompt("Введите возраст");
+        var intAge = parseInt(age) + 1;
+        alert("В следующем году вам будет " + intAge);
+    }
+    function f6() {
+        let id = prompt("Ввести id", "ID2 (от 1 до 8)");
+        if (id == 'ID1' || id == 'ID2' || id == 'ID3' || id == 'ID4' || id == 'ID5' || id == 'ID6' || id == 'ID7' || id == 'ID8') {
+            let innerHTML = document.getElementById(id).innerHTML;
+            alert(innerHTML);
+        }
+        else
+            alert('неверно введен ID')
+    }
+    function f7() {
+        let id = prompt("Ввести id", "ID2 (от 1 до 8)");
+        if (id == 'ID1' || id == 'ID2' || id == 'ID3' || id == 'ID4' || id == 'ID5' || id == 'ID6' || id == 'ID7' || id == 'ID8'){
+            let newText = prompt("Введите новый текст");
+            document.getElementById(id).innerHTML = newText;
+        }
+        else
+            alert('неверно введен ID')
+    }
+    function f8() {
+        let f = prompt("Введи число");
+        let a = parseInt(f);
+        let res = 'число превышает 1000';
+        if (a <= 1000){
+            res = '';
+            res += 'Цикл for \n';
+            for (let i = 1; i <= a; i++)
+                res += i * i * i + '\n';
+            res += 'Цикл while \n';
+            let i = 0;
+            while (i++ < a)
+                res += i * i * i + '\n';
+            res += 'Цикл do while \n';
+            i = 1;
+            do res += i * i * i + '\n';
+            while (i++ < a)
+        }
+        alert(res)
+
+    }
+    function f9() {
+        let result = '     ';
+        function buff(val) { //функция для пробелов (сдвига) перед значениями
+            let buff = '';
+            let pad = 4 - val;
+            while (pad-- > 0)
+                buff += '  ';
+            return buff;
+        }
+
+        for (let i = 0; i <= 10; i++) {
+            for (let j = 0; j <= 10; j++) {
+                if (i == 0 && j > 0) { // верхняя первая строка
+                    result += buff((j + '').length + 1) + '[' + j + ']'; //считаем [] за 1 символ
+                } else if (j == 0 && i > 0) { // боковой левый ряд
+                    result += '[' + i + ']' + buff((i + '').length + 2); //считаем [] за 1 символ + учитываем максимальную длину ряда =3
+                } else if (i > 0 && j > 0) { //содержимое таблицы
+                    if (j == 5 || j == 9) result += buff((i * j + '').length - 1) + i * j; //попытка прорядить для приличия
+                    else result += buff((i * j + '').length) + i * j;
+                }
+            }
+            result += '\n'
+        }
+        alert(result)
+    }
+    function f10() {
+        let res = ''
+        for (let i = 1; i < 10; i++) {
+            for (let j = 1; j <= i; j++)
+                res += i
+            res += '\n'
+        }
+        alert(res)
+    }
+</script>
+</body>

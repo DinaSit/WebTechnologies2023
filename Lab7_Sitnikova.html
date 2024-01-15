@@ -1,0 +1,130 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа №7</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            width: 70%;
+            margin: 0 auto;
+        }
+        button {
+            background-color: #5F9EA0;
+            border: #ffff00;
+            border-radius: 6px;
+            font-size: 20px;
+            transition-duration: 0.4s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            color: white; /* Цвет текста */
+        }
+        button:hover {
+            background-color: #90ee90;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 16px 32px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Тень для текста при наведении */
+        }
+        .console {
+            font-family: monospace;
+            background-color: #90ee90;
+            border: 4px inset #5F9EA0;
+            padding: 10px;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+        .console p {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center">Лабораторная работа 7</h2>
+    <b>Работа с объектами и обработка событий в javascript</b><br>
+    <small>Ситникова Диана, НПИбд-01-22, №1032201746</small>
+    <hr>
+    <b>Упражнение 1.</b> Выполнить 2 задания, реализовав их во встроенном javascript внутрь html. Каждое задание –
+    запускается отдельной кнопкой (всего должно быть 2 кнопки, с текстом, соответствующим номеру задания). Результат
+    выполнения задания выводится в «консоль» (блок в html документе). <br><hr>
+    <p>
+        <u>Задание 6.</u> Создать объект цвета, ключами у которого являются названия цветов на английском языке, например,
+        red, green и т.д. а элементами их русские эквиваленты. С помощью цикла for-in вывестие на экран все названия цветов
+        и через дефис их перевод. <br>
+        <button onclick="f1()">Start</button>
+    </p>
+    <p>
+        <u>Задание 16.</u> Создать объект футбольная команда с ключами Николай, Андрей, Петр и т.д. с элементами 'вратарь',
+        'нападающий', 'правый защитник' и т.д. С помощью цикла for-in вывестие на экран строки такого формата: 'Николай -
+        вратарь'. и т.д.<br>
+        <button onclick="f2()">Start</button>
+    </p>
+    <div id="cons" class="console"></div><hr>
+    <b>Упражнение 2.</b> Выполнить 2 задания, реализовав их во встроенном javascript внутрь html. Каждое задание – выделено
+    областью с border, с текстом, соответствующим номеру задания. Всего должно быть 2 области. В зависимости от задания
+    результат выполнения выводится либо в «консоль» (блок в html документе), либо в другое поле (например, текстовой поле),
+    либо появляется в модальном окне при вызове функции alert.<br><hr>
+    <div style="border: 4px inset #5F9EA0; padding: 10px">
+        <u>Задание 6.</u> Создать кнопку с надписью «yes». При наведении мыши на кнопку меняется запись и ее цвет, при
+        выведении все возвращается в начальное положение <br>
+        <button id="butt">Yes</button>
+    </div><br>
+    <div style="border: 4px inset #5F9EA0; padding: 10px">
+        <u>Задание 16.</u> Используя функцию, изменить текст элемента &lt;p&gt; при нажатии на кнопку. <br>
+        <button onclick="f4()">Start</button>
+        <p id="paragraph"> Текст для изменения</p>
+        <button onclick="f5()">Start</button>
+        <p id="p1"> Текст для изменения</p>
+    </div><hr>
+    <script>
+    function f1() {
+        let colorTranslations = {
+            red: 'красный',
+            green: 'зеленый',
+            blue: 'синий',
+            yellow: 'желтый'
+        };
+        let consoleDiv = document.getElementById('cons');
+        consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод
+
+        for (let color in colorTranslations) {
+            consoleDiv.innerHTML += color + ' - ' + colorTranslations[color] + '<br>';
+        }
+    }
+    function f2() {
+        let footballTeam = {
+            Николай: 'вратарь',
+            Андрей: 'нападающий',
+            Петр: 'правый защитник'
+        };
+        let consoleDiv = document.getElementById('cons');
+        consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод
+        let n = 0;
+        for (let player in footballTeam) {
+            n += 1;
+            consoleDiv.innerHTML += n + `. ${player} - ${footballTeam[player]}<br>`;
+        }
+    }
+
+    butt = document.getElementById("butt")
+    butt.onmouseenter = function () {
+        butt.textContent = 'No'
+    }
+    butt.onmouseleave = function () {
+        butt.textContent = 'Yes'
+    }
+    function f4() {
+        let paragraph = document.getElementById("paragraph");
+        if (paragraph.innerHTML === "Текст изменен!") {
+            paragraph.innerHTML = "Текст для изменения";
+        } else {
+            paragraph.innerHTML = "Текст изменен!";
+        }
+    }
+    function f5() {
+        let text = prompt("Введи новый текст");
+        if (text !== null && text.trim() !== "") {
+            document.getElementById("p1").innerHTML = text;
+        } else {
+            alert("Вы не ввели текст!");
+        }
+    }
+    </script>
+</body>

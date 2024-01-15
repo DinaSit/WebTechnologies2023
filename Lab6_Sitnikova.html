@@ -1,0 +1,118 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторная работа №6</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      width: 70%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<h2 style="text-align: center">Лабораторная работа 6</h2>
+<b>Обработка строк в javascript</b><br>
+<small>Ситникова Диана, НПИбд-01-22, №1032201746</small>
+<hr>
+<b>Упражнение 1.</b> Выполнить 2 задания, реализовав их во встроенном javascript внутрь html. Каждое задание –
+запускается отдельной кнопкой (всего должно быть 2 кнопки, с текстом, соответствующим номеру задания). Результат
+выполнения задания выводится в «консоль» (блок в html документе).<br> Там, где требуется замена частей или
+преобразование в строках – выводить исходную И преобразованные строки при нажатии на кнопку запуска задания. <br>
+Например:<br> исходная строка: 'aaa@bbb@ccc' <br> преобразованная строка: 'aaa!bbb!ccc' <br>
+<p>
+  <u>Задание 6.</u> В переменной date лежит дата в формате '2025-12-31'. Преобразовать эту дату в формат '31/12/2025'.<br>
+  <button onclick="f1()">Start</button>
+</p>
+<p>
+  <u>Задание 16.</u> Подсчитать количество слов во введенной  строке, найти длину максимального слова, минимального
+  слова и среднюю длину слов. Предусмотреть возможность присутствия в тексте нескольких пробелов и знаков препинания.<br>
+  <button onclick="f2()">Start</button>
+</p><hr>
+<b>Упражнение 2.</b> Выполнить 3 задания, реализовав их во встроенном javascript внутрь html. Каждое задание –
+запускается отдельной кнопкой (всего должно быть 3 кнопки, с текстом, соответствующим номеру задания). Результат
+выполнения задания выводится в «консоль» (блок в html документе).<br>
+Там, где требуется замена частей или преобразование в строках – выводить исходную И преобразованные строки при нажатии
+на кнопку запуска задания. <br>
+Например:<br>
+исходная строка: 'aaa@bbb@ccc'<br>
+преобразованная строка: 'aaa!bbb!ccc'<br>
+<p>
+  <u>Задание 6.</u> Дана строка 'aa aba abba abbba abca abea'. Написать регулярное выражение, которое найдет строки aa,
+  aba по шаблону: буква 'a', буква 'b' один раз или ни одного, буква 'a'. <br>
+  <button onclick="f3()">Start</button>
+</p>
+<p>
+  <u>Задание 16.</u> Дана строка 'aa aba abba abbba abbbba abbbbba'. Написать регулярное выражение, которое найдет
+  строки вида aba, в которых 'b' встречается не менее 4-х раз. <br>
+  <button onclick="f4()">Start</button>
+</p>
+<p>
+  <u>Задание 26.</u> Написать регулярное выражение, которое найдет строки следующего вида: по краям стоят буквы 'a', а
+  между ними – буква от a до g. <br>
+  <button onclick="f5()">Start</button>
+</p><hr>
+<script>
+  function f1() {
+    let date = '2025-12-31';
+    let parts = date.split('-');
+    let formattedDate = parts[2] + '/' + parts[1] + '/' + parts[0];
+
+    alert('Исходная дата: ' + date + '\n' +
+            'Преобразованная дата: ' + formattedDate);
+  }
+  function f2() {
+    let inputString = prompt('Введите строку:');
+    // Разбиваем строку на слова
+    let words = inputString.match(/\b\w+\b/g) || [];
+    // Инициализируем переменные для минимальной и максимальной длины
+    let minLength = Infinity; // Используем бесконечность как начальное значение для минимальной длины
+    let maxLength = 0;
+    // Переменные для суммы и общего количества слов
+    let totalLength = 0;
+    let wordCount = words.length;
+    // Проходим по каждому слову
+    for (let i = 0; i < wordCount; i++) {
+      let currentWord = words[i];
+      // Находим минимальную и максимальную длину
+      minLength = Math.min(minLength, currentWord.length);
+      maxLength = Math.max(maxLength, currentWord.length);
+      // Суммируем длины слов
+      totalLength += currentWord.length;
+    }
+    // Находим среднюю длину
+    let averageLength = totalLength / wordCount;
+
+    alert('Исходная строка: ' + inputString + '\n' +
+            'Количество слов: ' + wordCount + '\n' +
+            'Максимальная длина слова: ' + maxLength + '\n' +
+            'Минимальная длина слова: ' + minLength + '\n' +
+            'Средняя длина слова: ' + averageLength);
+  }
+  function f3() {
+    let inputString = 'aa aba abba abbba abca abea';
+    let regex = /ab?a/g;
+    let matchedStrings = inputString.match(regex) || [];
+
+    alert('Исходная строка: ' + inputString + '\n' +
+            'Преобразованная строка: ' + matchedStrings.join(', '));
+  }
+
+  function f4() {
+    let inputString = 'aa aba abba abbba abbbba abbbbba';
+    let regex = /ab{4,}a/g;
+    let matchedStrings = inputString.match(regex) || [];
+
+    alert('Исходная строка: ' + inputString + '\n' +
+            'Найденные строки: ' + matchedStrings.join(', '));
+  }
+
+  function f5() {
+    let inputString = 'aa afa aga aha aka aaa axa aza';
+    let regex = /a[a-g]a/g;
+    let matchedStrings = inputString.match(regex) || [];
+
+    alert('Исходная строка: ' + inputString + '\n' +
+            'Найденные строки: ' + matchedStrings.join(', '));
+  }
+</script>
+</body>
