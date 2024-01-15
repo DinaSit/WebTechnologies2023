@@ -1,0 +1,206 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторная работа №5</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      width: 70%;
+      margin: 0 auto;
+    }
+    .console {
+      font-family: monospace;
+      background-color: #BDECB6;
+      border: 4px inset #5F9EA0;
+      padding: 10px;
+      overflow: auto;
+      overflow-x: hidden;
+    }
+  </style>
+  <script>
+    function sortBySmallestDivisor(numbersArray) {
+      // Определяем функцию для нахождения наименьшего делителя числа
+      function findSmallestDivisor(number) {
+        for (let i = 2; i <= Math.sqrt(number); i++) {
+          if (number % i === 0) {
+            return i;
+          }
+        }
+        return number;
+      }
+      // Определяем функцию для сортировки
+      function customSort(a, b) {
+        return findSmallestDivisor(a) - findSmallestDivisor(b);
+      }
+      // Копируем массив перед сортировкой, чтобы не изменять оригинал
+      const sortedArray = [...numbersArray];
+      sortedArray.sort(customSort); // Вызывается метод sort на копии массива, используя customSort как
+      // функцию сравнения. Это приводит к тому, что массив сортируется в порядке наименьших делителей каждого числа.
+      // Если у числа нет делителя, sort сортирует по возрастанию
+      return sortedArray;
+    }
+  </script>
+  <script src="f4.js" defer></script>
+</head>
+<body>
+<h2 style="text-align: center">Лабораторная работа 5</h2>
+<b>Работа с функциями и массивами в javascript</b><br>
+<small>Ситникова Диана, НПИбд-01-22, №1032201746</small>
+<hr>
+<b>Упражнение 1.</b> Выполнить 4 задания, реализовав их во встроенном javascript внутрь html.
+Каждое задание – запускается отдельной кнопкой (всего должно быть 4 кнопки, с текстом, соответствующим номеру задания).
+Результат выполнения задания выводится в «консоль» (блок в html документе).<br><hr>
+<p>
+  <u>Задание 6.</u> Переменная lang может принимать 2 значения: 'ru'  и 'en'. Если она имеет значение 'ru', то в
+  переменную arr записать массив дней недели на русском языке, а если имеет значение 'en' – то на английском.
+  Решить задачу, используя два оператора if.<br>
+  <button onclick="f1()">Start</button>
+</p>
+<p>
+  <u>Задание 16.</u> Создать двухмерный массив. Первые два ключа – это 'ru' и 'en'. Пусть первый ключ содержит элемент,
+  являющийся массивом названий дней недели по-русски, а второй – по-английски. Вывести с помощью этого массива
+  понедельник по-русски и среду по-английски. <br>
+  <button onclick="f2()">Start</button>
+</p>
+<p>
+  <u>Задание 26.</u> Написать скрипт, который сортирует массив чисел следующим образом: сначала располагаются  числа,
+  которые делятся на 2,потом на 3 и т.д. Сортировку оформить в виде функции, поместив ее в части head html-файла.
+  Создать объект типа Array и отсортировать его соответствующим образом, используя функцию этого класса. <br>
+  <button onclick="f3()">Start</button>
+</p>
+<p>
+  <u>Задание 36.</u> Написать скрипт, который вставляет после  i-го числа в массиве, последовательность из  j чисел.
+  Операцию оформить в виде функции, поместив ее в js-файл. Создать объект типа Array и выполнить над ним соответствующие
+  действия, используя функцию этого класса. <br>
+  <button onclick="f4()">Start</button>
+</p>
+<div id="result"></div>
+<div id="cons1" class="console"></div>
+<hr>
+<b>Упражнение 2.</b> Выполнить 2 задания, реализовав их во встроенном javascript внутрь html. Каждое задание –
+запускается отдельной кнопкой (всего должно быть 2 кнопки, с текстом, соответствующим номеру задания). Результат
+выполнения задания выводится в «консоль» (блок в html документе).<br>
+<p><hr>
+<p>
+  <u>Задание 6.</u> Составить функцию, значением которой было бы наименьшее общее кратное всех нечетных натуральных
+  чисел от 1 до n включительно (n – параметр функции). <br>
+  <button onclick="f5()">Start</button>
+</p>
+<p>
+  <u>Задание 16.</u> Составить функцию, которая проверяет, можно ли заданное натуральное число представить в виде
+  квадрата (куба) какого-либо простого числа.<br>
+  <button onclick="f6()">Start</button>
+</p>
+<div id="cons2" class="console"></div>
+<hr>
+
+<script>
+  function f1() {
+    let arr;
+    let lang = prompt("Выбери язык", "ru/en");
+    if (lang === 'ru')
+      {
+        arr = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресение"];
+      }
+    if (lang === 'en')
+      {
+        arr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday", "Saturday"];
+      }
+    if (lang !== 'en' && lang !== 'ru')
+    {
+      arr = ["Введено некорректное значение"];
+    }
+    let consoleDiv = document.getElementById('cons1'); // ищем элемент HTML по ID в структуре текущего документа HTML
+    consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод при помощи установки пустого HTML-содержимого
+    consoleDiv.innerHTML = arr.join(', '); //выводим массив через запятую
+  }
+  function f2() {
+    let arr = {
+      ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+      en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    };
+    let consoleDiv = document.getElementById('cons1');
+    consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод
+    consoleDiv.innerHTML = arr.ru[0] + ', ' + arr.en[2]; // Выводим первый элемент массива с ключом ru и третий с ключом en
+  }
+  function f3() {
+    // Создаем массив чисел
+    const numbers = [9, 4, 6, 8, 12, 7, 5, 10, 1, 21];
+    // Сортируем массив с использованием функции
+    const sortedNumbers = sortBySmallestDivisor(numbers);
+    let consoleDiv = document.getElementById('cons1');
+    consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод
+    consoleDiv.innerHTML = sortedNumbers.toString();
+  }
+  function f4() {
+    const array = [1, 2, 3, 4, 5];
+    const i = prompt("Задай позицию (0-5) для вставки [0, 0, 0, 0] в массив [1, 2, 3, 4, 5]");
+    const j = [0, 0, 0, 0];
+
+    insertSequence(array, i, j);
+    let consoleDiv = document.getElementById('cons1');
+    consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод
+    consoleDiv.innerHTML = array.toString();
+  }
+  function f5() {
+    let consoleDiv = document.getElementById('cons2');
+    consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод
+    // НОК (Наименьшее общее кратное) — это наименьшее положительное целое число, которое делится на все заданные числа
+    // без остатка
+    let n = prompt("Задай верхний предел для нечетных чисел");
+    if (n <= 0){
+      consoleDiv.innerHTML = 'Число должно быть больше 0';
+      return;
+    }
+    function gcd(a, b) { //НОД - рекурсивный самовызов по алгоритму Евклида с заменой большего числа на остаток от деления
+      // меньшего числа на него. В конечном итоге, когда b становится равным 0, выполняется первая часть тернарного
+      // оператора, и функция возвращает текущее значение a, которое является наибольшим общим делителем.
+      return b === 0 ? a : gcd(b, a % b);
+    }
+    function lcm(a, b) { //НОК(a,b) = a*b/НОД(a,b) - формула
+      return (a * b) / gcd(a, b);
+    }
+
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+      if (i % 2 === 1) { // если число нечетное, идем вычислять НОК для текущего результата и нечетного числа
+        result = lcm(result, i);
+      }
+    }
+    consoleDiv.innerHTML = 'НОК всех нечетных чисел от 1 до ' + n + ' равен ' + result;
+  }
+  function f6() {
+    let consoleDiv = document.getElementById('cons2');
+    consoleDiv.innerHTML = ''; // Очищаем предыдущий вывод
+    function isPrime(n) {
+      // Является ли найденное число простым (не имеет делителя) и натуральным
+      if (n === 1 || n % 1 !== 0) return false;
+      if (n <= 3) return true;
+
+      if (n % 2 === 0 || n % 3 === 0) return false;
+
+      for (let i = 5; i * i <= n; i += 6) {
+        if (n % i === 0 || n % (i + 2) === 0) return false;
+      }
+      return true;
+    }
+
+    let n = prompt("Задай натуральное число");
+    // Проверка на корректность введенного значения
+    if (n <= 0 || isNaN(n)) {
+      consoleDiv.innerHTML = "Число должно быть натуральным и корректным.";
+      return;
+    }
+
+    let s = Math.sqrt(n);
+    let c = Math.cbrt(n);
+    if (isPrime(s)) {
+      consoleDiv.innerHTML = n + " можно представить в виде квадрата простого числа = " + s;
+    }
+    else if (isPrime(c)) {
+      consoleDiv.innerHTML = n + " можно представить в виде куба простого числа = " + c;
+    }
+    else
+      consoleDiv.innerHTML = n + " нельзя представить в виде квадрата или куба простого числа";
+  }
+</script>
+</body>
